@@ -15,11 +15,13 @@ module PayPal
 
     ENDPOINTS = {
        :sandbox => {
-         :api  => "https://api-3t.sandbox.paypal.com/nvp",
+         :api_cert  => "https://api.sandbox.paypal.com/nvp",
+         :api_sig   => "https://api-3t.sandbox.paypal.com/nvp",
          :site => "https://www.sandbox.paypal.com/cgi-bin/webscr"
        },
        :production => {
-         :api  => "https://api-3t.paypal.com/nvp",
+         :api_cert  => "https://api.paypal.com/nvp",
+         :api_sig   => "https://api-3t.paypal.com/nvp",
          :site => "https://www.paypal.com/cgi-bin/webscr"
        }
     }
@@ -48,6 +50,10 @@ module PayPal
       # Set PayPal's API certificate.
       #
       attr_accessor :ssl_cert
+      
+      # Set PayPal's application id.
+      #
+      attr_accessor :application_id
 
       # Set seller id. Will be used to verify IPN.
       #
@@ -96,7 +102,7 @@ module PayPal
     # Return API endpoint based on current environment.
     #
     def self.api_endpoint
-      endpoints[:api]
+      if signature ? endpoints[:api_sig] : endpoints[:api_cert]
     end
 
     # Return PayPal's API version.
