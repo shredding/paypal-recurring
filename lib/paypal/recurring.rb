@@ -102,7 +102,7 @@ module PayPal
     # Return API endpoint based on current environment.
     #
     def self.api_endpoint
-      if signature ? endpoints[:api_sig] : endpoints[:api_cert]
+      signature ? endpoints[:api_sig] : endpoints[:api_cert]
     end
 
     # Return PayPal's API version.
