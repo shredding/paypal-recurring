@@ -147,6 +147,11 @@ module PayPal
             http.use_ssl = true
             http.verify_mode = OpenSSL::SSL::VERIFY_PEER
             http.ca_file = CA_FILE
+            if PayPal::Recurring.ssl_cert
+              cert = File.read(PayPal::Recurring.ssl_cert)
+              http.cert = OpenSSL::X509::Certificate.new(cert)
+              http.key = OpenSSL::PKey::RSA.new(cert)
+            end
           end
         end
       end
@@ -156,6 +161,7 @@ module PayPal
           :username    => PayPal::Recurring.username,
           :password    => PayPal::Recurring.password,
           :signature   => PayPal::Recurring.signature,
+          :ssl_cert    => PayPal::Recurring.ssl_cert,
           :version     => PayPal::Recurring.api_version
         }
       end

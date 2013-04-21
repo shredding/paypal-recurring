@@ -44,6 +44,10 @@ module PayPal
       # Set PayPal's API signature.
       #
       attr_accessor :signature
+      
+      # Set PayPal's API certificate.
+      #
+      attr_accessor :ssl_cert
 
       # Set seller id. Will be used to verify IPN.
       #
