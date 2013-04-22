@@ -31,6 +31,8 @@ module PayPal
       attr_accessor :trial_length
       attr_accessor :trial_period
       attr_accessor :trial_amount
+      attr_accessor :subject
+      attr_accessor :no_shipping
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -68,10 +70,11 @@ module PayPal
           :item_category,
           :item_name,
           :item_amount,
-          :item_quantity
+          :item_quantity,
+          :subject,
+          :no_shipping
         ).merge(
           :payment_action => "Authorization",
-          :no_shipping => 1,
           :L_BILLINGTYPE0 => "RecurringPayments"
         )
 
@@ -273,7 +276,11 @@ module PayPal
       def collect(*args) # :nodoc:
         args.inject({}) do |buffer, attr_name|
           value = send(attr_name)
-          buffer[attr_name] = value if value
+          if value
+            buffer[attr_name] = value 
+          elsif attr_name.to_s == "no_shipping"
+            buffer[attr_name] = 1
+          end
           buffer
         end
       end
