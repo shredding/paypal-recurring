@@ -51,6 +51,10 @@ module PayPal
       #
       attr_accessor :ssl_cert
       
+      # Set third party authorization signature.
+      #
+      attr_accessor :authorization
+      
       # Set PayPal's application id.
       #
       attr_accessor :application_id
