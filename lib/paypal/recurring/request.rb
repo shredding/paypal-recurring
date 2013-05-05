@@ -124,8 +124,6 @@ module PayPal
           http["X-PAYPAL-APPLICATION-ID"] = PayPal::Recurring.application_id
           http["X-PAYPAL-SECURITY-SIGNATURE"] = PayPal::Recurring.signature
           http["X-PP-AUTHORIZATION"] = PayPal::Recurring.authorization
-          http["X-PAYPAL-REQUEST-DATA-FORMAT"] = "JSON"
-          http["X-PAYPAL-RESPONSE-DATA-FORMAT"] = "JSON"
         end
       end
 
