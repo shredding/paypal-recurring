@@ -88,7 +88,6 @@ module PayPal
         :trial_length          => "TRIALTOTALBILLINGCYCLES",
         :trial_period          => "TRIALBILLINGPERIOD",
         :username              => "USER",
-        :subject               => "SUBJECT",
         :version               => "VERSION"
       }
 
@@ -120,8 +119,10 @@ module PayPal
       def request
         @request ||= Net::HTTP::Post.new(uri.request_uri).tap do |http|
           if PayPal::Recurring.authorization
-            http["X-PP-AUTHORIZATION"] = PayPal::Recurring.authorization
+            http["X-PAYPAL-AUTHORIZATION"] = PayPal::Recurring.authorization
             http["X-PAYPAL-APPLICATION-ID"] = PayPal::Recurring.application_id
+            http["X-PAYPAL-REQUEST-DATA-FORMAT"] = "JSON"
+            http["X-PAYPAL-RESPONSE-DATA-FORMAT"] = "JSON"
           else
             http["User-Agent"] = "PayPal::Recurring/#{PayPal::Recurring::Version::STRING}"
             http["X-PAYPAL-SECURITY-USERID"] = PayPal::Recurring.username

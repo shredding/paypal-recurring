@@ -31,7 +31,6 @@ module PayPal
       attr_accessor :trial_length
       attr_accessor :trial_period
       attr_accessor :trial_amount
-      attr_accessor :subject
       attr_accessor :no_shipping
 
       def initialize(options = {})
@@ -71,7 +70,6 @@ module PayPal
           :item_name,
           :item_amount,
           :item_quantity,
-          :subject,
           :no_shipping
         ).merge(
           :payment_action => "Authorization",
