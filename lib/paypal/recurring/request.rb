@@ -121,6 +121,7 @@ module PayPal
         @request ||= Net::HTTP::Post.new(uri.request_uri).tap do |http|
           if PayPal::Recurring.authorization
             http["X-PP-AUTHORIZATION"] = PayPal::Recurring.authorization
+            http["X-PAYPAL-APPLICATION-ID"] = PayPal::Recurring.application_id
           else
             http["User-Agent"] = "PayPal::Recurring/#{PayPal::Recurring::Version::STRING}"
             http["X-PAYPAL-SECURITY-USERID"] = PayPal::Recurring.username
