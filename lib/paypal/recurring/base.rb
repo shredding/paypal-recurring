@@ -31,6 +31,7 @@ module PayPal
       attr_accessor :trial_length
       attr_accessor :trial_period
       attr_accessor :trial_amount
+      attr_accessor :subject
       attr_accessor :no_shipping
 
       def initialize(options = {})
