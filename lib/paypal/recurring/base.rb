@@ -70,6 +70,7 @@ module PayPal
           :item_name,
           :item_amount,
           :item_quantity,
+          :subject,
           :no_shipping
         ).merge(
           :payment_action => "Authorization",

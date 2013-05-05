@@ -88,6 +88,7 @@ module PayPal
         :trial_length          => "TRIALTOTALBILLINGCYCLES",
         :trial_period          => "TRIALBILLINGPERIOD",
         :username              => "USER",
+        :subject               => "SUBJECT",
         :version               => "VERSION"
       }
 

@@ -55,6 +55,10 @@ module PayPal
       #
       attr_accessor :authorization
       
+      # Set third party email.
+      #
+      attr_accessor :subject
+      
       # Set PayPal's application id.
       #
       attr_accessor :application_id
