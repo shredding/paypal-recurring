@@ -119,14 +119,17 @@ module PayPal
       #
       def request
         @request ||= Net::HTTP::Post.new(uri.request_uri).tap do |http|
-          # http["User-Agent"] = "PayPal::Recurring/#{PayPal::Recurring::Version::STRING}"
-          # http["X-PAYPAL-SECURITY-USERID"] = PayPal::Recurring.username
-          # http["X-PAYPAL-SECURITY-PASSWORD"] = PayPal::Recurring.password
-          # http["X-PAYPAL-APPLICATION-ID"] = PayPal::Recurring.application_id
-          # http["X-PAYPAL-SECURITY-SIGNATURE"] = PayPal::Recurring.signature
-          http["X-PP-AUTHORIZATION"] = PayPal::Recurring.authorization
-          # http["X-PAYPAL-REQUEST-DATA-FORMAT"] = "JSON"
-          # http["X-PAYPAL-RESPONSE-DATA-FORMAT"] = "JSON"
+          if PayPal::Recurring.authorization
+            http["X-PP-AUTHORIZATION"] = PayPal::Recurring.authorization
+          else
+            http["User-Agent"] = "PayPal::Recurring/#{PayPal::Recurring::Version::STRING}"
+            http["X-PAYPAL-SECURITY-USERID"] = PayPal::Recurring.username
+            http["X-PAYPAL-SECURITY-PASSWORD"] = PayPal::Recurring.password
+            http["X-PAYPAL-APPLICATION-ID"] = PayPal::Recurring.application_id
+            http["X-PAYPAL-SECURITY-SIGNATURE"] = PayPal::Recurring.signature
+            http["X-PAYPAL-REQUEST-DATA-FORMAT"] = "JSON"
+            http["X-PAYPAL-RESPONSE-DATA-FORMAT"] = "JSON"
+          end
         end
       end
 
