@@ -43,15 +43,15 @@ Then, you can request a new payment authorization:
 
 If you request a payment on behalf of a third party:
 
-	ppr = PayPal::Recurring.new({
-	  :return_url   => "http://example.com/paypal/thank_you",
-	  :cancel_url   => "http://example.com/paypal/canceled",
-	  :ipn_url      => "http://example.com/paypal/ipn",
-	  :description  => "Awesome - Monthly Subscription",
-	  :amount       => "9.00",
-	  :subject		=> "thirdparty@emailaddress.com",
-	  :currency     => "USD"
-	})
+  ppr = PayPal::Recurring.new({
+	:return_url   => "http://example.com/paypal/thank_you",
+	:cancel_url   => "http://example.com/paypal/canceled",
+	:ipn_url      => "http://example.com/paypal/ipn",
+	:description  => "Awesome - Monthly Subscription",
+	:amount       => "9.00",
+	:subject		=> "thirdparty@emailaddress.com",
+	:currency     => "USD"
+  })
 	
 You also need to add "X-PAYPAL-AUTHORIZATION" header in your third party API call. Generate "X-PAYPAL-AUTHORIZATION" header by using this gem https://github.com/fx83060856/paypal-permissions.git
 
