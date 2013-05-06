@@ -21,14 +21,14 @@ First, you need to set up your credentials:
   end
 
 If you are using paypal certificate:
-
-	PayPal::Recurring.configure do |config|
-	  # config.sandbox = true
-	  config.username = "seller_1308793919_biz_api1.simplesideias.com.br"
-	  config.password = "1308793931"
-	  config.application_id = "APP-YOURAPPIDHERE"
-	  config.ssl_cert = "/path/to/cert_key_pem.txt"
-	end
+  
+  PayPal::Recurring.configure do |config|
+    # config.sandbox = true
+    config.username = "seller_1308793919_biz_api1.simplesideias.com.br"
+    config.password = "1308793931"
+    config.application_id = "APP-YOURAPPIDHERE"
+    config.ssl_cert = "/path/to/cert_key_pem.txt"
+  end
 
 Then, you can request a new payment authorization:
 
