@@ -4,7 +4,7 @@ PayPal Express Checkout API Client for recurring billing. A modified version bas
 
 == Installation
 
-  In your Gemfile, add gem 'paypal-recurring', :git => git://github.com/fx83060856/paypal-recurring.git
+  In your Gemfile, add gem 'paypal-recurring', :git => git://github.com/fredxinfan/paypal-recurring.git
 
 == Usage
 
